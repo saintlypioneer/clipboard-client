@@ -76,7 +76,7 @@ function App() {
   return (
     <Container>
       <div id="center">
-        <h1>Clip-It</h1>
+        <h1>Clip-Me</h1>
         <div id="buttons">
           <button
             onClick={copyToClipboard}
