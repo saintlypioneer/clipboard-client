@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import Form from "./components/Form";
 
 function App() {
   const url = window.location.href.split("/");
   const roomId = url[url.length - 1];
+
+  console.log("Room ID: " + roomId);
 
   const [clipboard, setClipboard] = useState("");
   const [copySuccess, setCopySuccess] = useState(false);
@@ -77,7 +80,8 @@ function App() {
     <Container>
       <div id="center">
         <h1>Clip-Me</h1>
-        <div id="buttons">
+        {
+          roomId=="" ? <Form /> : <div id="buttons">
           <button
             onClick={copyToClipboard}
             className={`${isButtonDisabled ? "disabled" : ""} ${
@@ -96,6 +100,7 @@ function App() {
             <img src="/assets/svg/paste.svg" />
           </button>
         </div>
+        }
       </div>
     </Container>
   );
